@@ -1,41 +1,41 @@
 package com.example.bookstoreingress.service;
 
 
-import com.example.bookstoreingress.dao.AuthorDAO;
+import com.example.bookstoreingress.dao.AuthorRepository;
 import com.example.bookstoreingress.entity.Author;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
 
     @Autowired
-    private AuthorDAO authorDAO;
+    private AuthorRepository authorRepository;
 
     @Override
-    @Transactional
     public List<Author> getAllAuthors() {
-        return authorDAO.getAllAuthors();
+        return authorRepository.findAll();
     }
 
     @Override
-    @Transactional
     public void saveAuthor(Author author) {
-        authorDAO.saveAuthor(author);
+        authorRepository.save(author);
     }
 
     @Override
-    @Transactional
     public Author getAuthor(int id) {
-        return authorDAO.getAuthor(id);
+        Author author = null;
+        Optional<Author> optionalAuthor = authorRepository.findById(id);
+        if(optionalAuthor.isPresent()){
+            author = optionalAuthor.get();
+        }
+        return author;
     }
 
     @Override
-    @Transactional
     public void deleteAuthor(int id) {
-        authorDAO.deleteAuthor(id);
+        authorRepository.deleteById(id);
     }
 }
