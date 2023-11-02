@@ -1,9 +1,11 @@
 package com.example.bookstoreingress.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -23,18 +25,18 @@ public class Student {
     @Column(name = "age", nullable = false)
     private int age;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonBackReference
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.PERSIST,
+            CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
             name = "student_reading",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id")
     )
-    private Set<Book> books;
+    private List<Book> books;
 
-    public Student(int studentId, String name, int age, Set<Book> books) {
-        this.studentId = studentId;
+    public Student(String name, int age) {
         this.name = name;
         this.age = age;
-        this.books = books;
     }
 }

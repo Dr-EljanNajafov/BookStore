@@ -1,10 +1,11 @@
 package com.example.bookstoreingress.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -20,17 +21,27 @@ public class Book {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "author_id", nullable = false)
-    private Author author;
+    @JsonManagedReference
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.PERSIST,
+            CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(
+            name = "author_books",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    private List<Author> authors;
 
-    @ManyToMany(mappedBy = "books")
-    private Set<Student> students;
+    @JsonManagedReference
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.PERSIST,
+            CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(
+            name = "student_reading",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id")
+    )
+    private List<Student> students;
 
-    public Book(int bookId, String name, Author author, Set<Student> students) {
-        this.bookId = bookId;
+    public Book(String name) {
         this.name = name;
-        this.author = author;
-        this.students = students;
     }
 }
