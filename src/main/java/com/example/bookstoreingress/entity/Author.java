@@ -1,5 +1,6 @@
 package com.example.bookstoreingress.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,13 +24,18 @@ public class Author {
     @Column(name = "age", nullable = false)
     private int age;
 
-//    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Book> books;
+    @JsonBackReference
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.PERSIST,
+            CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(
+            name = "author_books",
+            joinColumns = @JoinColumn(name = "author_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
+    private List<Book> books;
 
-    public Author(int authorId, String name, int age) {
-        this.authorId = authorId;
+    public Author(String name, int age) {
         this.name = name;
         this.age = age;
-//        this.books = books;
     }
 }
