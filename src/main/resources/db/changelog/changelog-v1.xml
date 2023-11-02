@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="Eljan">
+        <createTable tableName="student">
+            <column name="student_id" type="SERIAL">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Eljan">
+        <createTable tableName="author">
+            <column name="author_id" type="SERIAL">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="Eljan">
+        <createTable tableName="book">
+            <column name="book_id" type="SERIAL">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_id" type="INT">
+                <constraints nullable="false" foreignKeyName="fk_author_id" referencedTableName="author" referencedColumnNames="author_id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="Eljan">
+        <createTable tableName="student_reading">
+            <column name="student_id" type="INT">
+                <constraints nullable="false" foreignKeyName="fk_student_id" referencedTableName="student" referencedColumnNames="student_id"/>
+            </column>
+            <column name="book_id" type="INT">
+                <constraints nullable="false" foreignKeyName ="fk_book_id_sr" referencedTableName ="book" referencedColumnNames ="book_id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id ="5" author ="Eljan">
+        <addPrimaryKey constraintName ="pk_student_reading"
+                       columnNames ="student_id, book_id"
+                       tableName ="student_reading"/>
+    </changeSet>
+
+    <changeSet id ="6" author ="Eljan">
+        <createTable tableName ="author_books">
+            <column name ="author_id" type ="INT">
+                <constraints nullable ="false"
+                             foreignKeyName ="fk_author_id_ab"
+                             referencedTableName ="author"
+                             referencedColumnNames ="author_id"/>
+            </column>
+            <column name ="book_id" type ="INT">
+                <constraints nullable ="false"
+                             foreignKeyName ="fk_book_id_ab"
+                             referencedTableName ="book"
+                             referencedColumnNames ="book_id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id ="7" author ="Eljan">
+        <addPrimaryKey constraintName ="pk_author_books"
+                       columnNames ="author_id, book_id"
+                       tableName ="author_books"/>
+    </changeSet>
+
+</databaseChangeLog>
