@@ -87,4 +87,46 @@
                        tableName ="author_books"/>
     </changeSet>
 
+    <changeSet id="8" author="Eljan">
+        <createTable tableName="_user">
+            <column name="id" type="SERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)"/>
+            <column name="firstname" type="varchar(255)"/>
+            <column name="lastname" type="varchar(255)"/>
+            <column name="password" type="varchar(255)"/>
+            <column name="role" type="varchar(255)">
+                <constraints checkConstraint="(role)::text = ANY ((ARRAY ['STUDENT'::character varying, 'AUTHOR'::character varying])::text[])"/>
+            </column>
+        </createTable>
+        <!-- Add the sequence definition for id -->
+        <createSequence sequenceName="_user_seq"/>
+    </changeSet>
+
+    <changeSet id="9" author="Eljan">
+        <createTable tableName="token">
+            <column name="expired" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="SERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="revoked" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="false" foreignKeyName ="fkiblu4cjwvyntq3ugo31klp1c6"
+                             referencedTableName ="_user" referencedColumnNames="id"/>
+            </column>
+            <column name="token" type="varchar(255)">
+                <constraints unique ="true"/>
+            </column>
+            <column name ="token_type" type ="varchar(255)">
+                <constraints checkConstraint ="(token_type)::text = 'BEARER'::text"/>
+            </column>
+        </createTable>
+        <createSequence sequenceName="token_seq"/>
+    </changeSet>
+
 </databaseChangeLog>
