@@ -1,5 +1,9 @@
-package com.example.bookstoreingress.auth;
+package com.example.bookstoreingress.controller;
 
+import com.example.bookstoreingress.auth.AuthenticationRequest;
+import com.example.bookstoreingress.auth.AuthenticationResponse;
+import com.example.bookstoreingress.service.AuthenticationService;
+import com.example.bookstoreingress.auth.RegisterRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

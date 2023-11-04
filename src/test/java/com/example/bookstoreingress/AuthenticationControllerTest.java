@@ -1,14 +1,12 @@
 package com.example.bookstoreingress;
 
-import com.example.bookstoreingress.auth.AuthenticationController;
 import com.example.bookstoreingress.auth.AuthenticationRequest;
 import com.example.bookstoreingress.auth.AuthenticationResponse;
 import com.example.bookstoreingress.auth.RegisterRequest;
-import com.example.bookstoreingress.auth.AuthenticationService;
+import com.example.bookstoreingress.service.AuthenticationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

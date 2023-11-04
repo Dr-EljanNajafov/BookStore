@@ -1,4 +1,4 @@
-package com.example.bookstoreingress.config;
+package com.example.bookstoreingress.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

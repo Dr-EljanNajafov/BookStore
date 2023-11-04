@@ -1,5 +1,7 @@
-package com.example.bookstoreingress.user;
+package com.example.bookstoreingress.controller;
 
+import com.example.bookstoreingress.service.UserService;
+import com.example.bookstoreingress.user.ChangePasswordRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;

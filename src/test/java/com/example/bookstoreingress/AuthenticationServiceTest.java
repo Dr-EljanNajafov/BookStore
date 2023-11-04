@@ -1,23 +1,18 @@
 package com.example.bookstoreingress;
 
-import com.example.bookstoreingress.auth.AuthenticationService;
-import com.example.bookstoreingress.auth.AuthenticationRequest;
+import com.example.bookstoreingress.service.AuthenticationService;
 import com.example.bookstoreingress.auth.AuthenticationResponse;
 import com.example.bookstoreingress.auth.RegisterRequest;
-import com.example.bookstoreingress.config.JwtService;
+import com.example.bookstoreingress.service.JwtService;
 import com.example.bookstoreingress.token.Token;
-import com.example.bookstoreingress.token.TokenRepository;
-import com.example.bookstoreingress.token.TokenType;
+import com.example.bookstoreingress.dao.TokenRepository;
 import com.example.bookstoreingress.user.Role;
 import com.example.bookstoreingress.user.User;
-import com.example.bookstoreingress.user.UserRepository;
+import com.example.bookstoreingress.dao.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;

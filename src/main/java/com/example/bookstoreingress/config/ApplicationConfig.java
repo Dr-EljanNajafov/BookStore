@@ -2,7 +2,7 @@ package com.example.bookstoreingress.config;
 
 
 import com.example.bookstoreingress.auditing.ApplicationAuditAware;
-import com.example.bookstoreingress.user.UserRepository;
+import com.example.bookstoreingress.dao.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,5 +1,6 @@
-package com.example.bookstoreingress.user;
+package com.example.bookstoreingress.dao;
 
+import com.example.bookstoreingress.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

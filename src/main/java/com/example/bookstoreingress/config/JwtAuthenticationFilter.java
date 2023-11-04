@@ -1,7 +1,8 @@
 package com.example.bookstoreingress.config;
 
 
-import com.example.bookstoreingress.token.TokenRepository;
+import com.example.bookstoreingress.dao.TokenRepository;
+import com.example.bookstoreingress.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

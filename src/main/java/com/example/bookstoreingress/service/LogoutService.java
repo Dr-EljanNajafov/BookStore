@@ -1,6 +1,6 @@
-package com.example.bookstoreingress.config;
+package com.example.bookstoreingress.service;
 
-import com.example.bookstoreingress.token.TokenRepository;
+import com.example.bookstoreingress.dao.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

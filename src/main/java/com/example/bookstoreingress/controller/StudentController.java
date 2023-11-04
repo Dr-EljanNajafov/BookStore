@@ -1,4 +1,4 @@
-package com.example.bookstoreingress.demo;
+package com.example.bookstoreingress.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

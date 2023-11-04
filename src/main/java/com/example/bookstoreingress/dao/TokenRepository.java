@@ -1,5 +1,6 @@
-package com.example.bookstoreingress.token;
+package com.example.bookstoreingress.dao;
 
+import com.example.bookstoreingress.token.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

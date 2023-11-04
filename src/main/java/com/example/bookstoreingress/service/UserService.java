@@ -1,5 +1,8 @@
-package com.example.bookstoreingress.user;
+package com.example.bookstoreingress.service;
 
+import com.example.bookstoreingress.dao.UserRepository;
+import com.example.bookstoreingress.user.ChangePasswordRequest;
+import com.example.bookstoreingress.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;

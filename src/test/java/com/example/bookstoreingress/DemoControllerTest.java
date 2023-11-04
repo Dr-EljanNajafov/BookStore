@@ -1,6 +1,6 @@
 package com.example.bookstoreingress;
 
-import com.example.bookstoreingress.demo.DemoController;
+import com.example.bookstoreingress.controller.DemoController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,12 +1,14 @@
-package com.example.bookstoreingress.auth;
+package com.example.bookstoreingress.service;
 
 
-import com.example.bookstoreingress.config.JwtService;
+import com.example.bookstoreingress.auth.AuthenticationRequest;
+import com.example.bookstoreingress.auth.AuthenticationResponse;
+import com.example.bookstoreingress.auth.RegisterRequest;
 import com.example.bookstoreingress.token.Token;
-import com.example.bookstoreingress.token.TokenRepository;
+import com.example.bookstoreingress.dao.TokenRepository;
 import com.example.bookstoreingress.token.TokenType;
 import com.example.bookstoreingress.user.User;
-import com.example.bookstoreingress.user.UserRepository;
+import com.example.bookstoreingress.dao.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
